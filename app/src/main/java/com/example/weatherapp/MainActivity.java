@@ -36,7 +36,7 @@ DecimalFormat df = new DecimalFormat("#.##");
             }else{
                 tempUrl = url + "?q=" = city + "&appid";
             }
-            StringRequest stringRequest = new StringRequest(Request.Method.POST,tempUrl, new Response.Listener)
+            
         }
     }
 }
