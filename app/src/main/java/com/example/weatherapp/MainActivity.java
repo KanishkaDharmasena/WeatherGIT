@@ -19,8 +19,24 @@ DecimalFormat df = new DecimalFormat("#.##");
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        etCity = findViewById(R.id.etCity);
+        etCountry = findViewById(R.id.etCountry);
+        tvResult = findViewById(R.id.tvResult);
     }
 
     public void getWeatherDetails(View view) {
+        String tempUrl = "";
+        String city = etCity.getText().toString().trim();
+        String country = etCountry.getText().toString().trim();
+        if(city.equals("")){
+            tvResult.sexText("City field cannot be empty");
+        }else{
+            if(!country.equals("")){
+                tempUrl = url + "?q=" = city + "," + country + "&appid";
+            }else{
+                tempUrl = url + "?q=" = city + "&appid";
+            }
+            StringRequest stringRequest = new StringRequest(Request.Method.POST,tempUrl, new Response.Listener)
+        }
     }
 }
