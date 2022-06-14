@@ -48,7 +48,10 @@ DecimalFormat df = new DecimalFormat("#.##");
                 public void onErrorResponse(VolleyError error) {
                     Toast.makeText(getApplicationContext(), error.toString().trim(), Toast.LENGTH_SHORT).show();
                 }
-            })
+            });
+            RequestQueue requesstQueue = Volley.newRequestQueue(getApplicationContext());
+            requestQueue.add(stringRequest);
+
 
         }
     }
