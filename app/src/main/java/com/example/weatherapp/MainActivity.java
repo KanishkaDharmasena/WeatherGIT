@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import java.text.DecimalFormat;
 
@@ -11,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 EditText etCity, etCountry;
 TextView tvResult;
 private final String url = "http://api.openweathermap.org/data/2.5/weather";
-private final String appId = "1d2d4a90c817c8a3c3f9279b4b8317d7";
+private final String appid = "1d2d4a90c817c8a3c3f9279b4b8317d7";
 DecimalFormat df = new DecimalFormat("#.##");
 
 
@@ -29,14 +31,25 @@ DecimalFormat df = new DecimalFormat("#.##");
         String city = etCity.getText().toString().trim();
         String country = etCountry.getText().toString().trim();
         if(city.equals("")){
-            tvResult.sexText("City field cannot be empty");
+            tvResult.setText("City field cannot be empty");
         }else{
             if(!country.equals("")){
-                tempUrl = url + "?q=" = city + "," + country + "&appid";
+                tempUrl = url + "?q=" = city + "," + country + "&appid" + appid;
             }else{
-                tempUrl = url + "?q=" = city + "&appid";
+                tempUrl = url + "?q=" = city + "&appid" + appid;
             }
-            
+            StringRequest_stringRequest = new StringRequest(Request.Method.POST, tempUrl, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.d("response",response);
+                }
+            }, new Response.ErrorListener(){
+                @override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getApplicationContext(), error.toString().trim(), Toast.LENGTH_SHORT).show();
+                }
+            })
+
         }
     }
 }
